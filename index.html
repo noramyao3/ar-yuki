@@ -10,10 +10,6 @@
 <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"> -->
 
 <body style="margin : 0px; overflow: hidden">
-  <audio src="assets/music.mp3" autoplay>
-    あなたのブラウザーは <code>audio</code>要素をサポートしていません。
-  </audio>
-
   <!-- AR.jsのデバックとA-FrameのVRボタンを非表示 -->
   <a-scene embedded arjs="debugUIEnabled: false" renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false">
     <a-assets>
@@ -38,6 +34,19 @@
   </a-scene>
   <script>
     document.querySelector("a-scene").renderer.gammaInput = true;
+  </script>
+
+  <script>
+    let audio = null;
+    document.body.addEventListener('click', () => {
+      audio = new Audio('assets/music.mp3');
+    });
+    
+    setInterval(() => {
+      if(audio) {
+        audio.play();
+      }
+    }, 5000);
   </script>
 </body>
 </html>
